@@ -142,3 +142,14 @@ export function removeTask(tasks, id) {
     tasks: tasks.filter((task) => task.id !== id),
   };
 }
+export function searchTasksByTitle(tasks, query) {
+  const normalizedQuery = query.trim().toLowerCase();
+
+  if (normalizedQuery === "") {
+    return [...tasks];
+  }
+
+  return tasks.filter((task) =>
+    task.title.toLowerCase().includes(normalizedQuery)
+  );
+}
